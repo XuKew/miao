@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    body{
+      margin: 0;
+    }
+    .a{
+      background-color: black;
+      margin: 0;
+    }
+    .b{
+      margin: auto;
+      color: white;
+      width: 600px;
+    }
+    .c{
+      margin: auto;
+      color: black;
+      width: 600px;
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+    #bottom{
+      margin-bottom: 20px;
+    }
+    #block{
+      width: 600px;
+      margin: 0 auto;
+    }
+    div#block *{
+      width: 180px;
+      height: 40px;
+      border: 3px solid black;
+      background-color: pink;
+      text-align: center;
+      box-sizing: border-box;
+      margin-top: 15px;
+      line-height: 34px;
+    }
+    div#block *:hover{
+      background-color: red;
+    }
+    #block > div:nth-child(n+5){
+      margin-left: 210px;
+    }
+    #block > div:nth-child(n+9){
+      margin-left: 420px;
+    }
+    #block > div:nth-child(5){
+      margin-top: -205px;
+    }
+    #block > div:nth-child(9){
+      margin-top: -205px;
+    }
+    .p1{
+      margin:0 auto;
+      width: 598px;
+      text-decoration-style: dashed black;
+      border-bottom: 1px dotted black;
+    }
+    .p2{
+      border-color: transparent;
+    }
+    .p3{
+      background-color: violet;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="a"><div class="b">hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果</div></div>
+  <div class="c">页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px</div>
+<div id="bottom">
+  <div id="block">
+  <div>宽180高40(包含边框)</div>
+  <div>水平间隙30px</div>
+  <div>垂直间隙15px</div>
+  <div>边框宽度3px</div>
+  <div>产品</div>
+  <div>产品</div>
+  <div>产品</div>
+  <div>产品</div>
+  <div>产品</div>
+  <div>产品</div>
+  <div>产品</div>
+  <div>产品</div>
+  </div>
+</div>  
+  <p class="p1">link</p>
+  <p class="p1">link</p>
+  <p class="p1">link</p>
+  <p class="p1">link</p>
+  <p class="p1 p2">link</p>
+  <p class="p3">©版权所有<br>本页所有布局均使用块元素</p>
+
+</body>
+</html>
