@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width">
   <title>JS Bin</title>
   <style>
-    body{
+    html,body{
       margin: 0;
+      
     }
     .a{
       width: 200px;
@@ -36,11 +37,11 @@
       margin: 0;
     }
     #include{
-      width: 60%;
+      width: calc(100% - 590px);
       height: 100vh;
-      
       margin-left: 200px;
       margin-top: -100vh;
+      box-sizing: border-box;
     }
     .c{
       background-color: antiquewhite;
@@ -49,6 +50,7 @@
       xmargin-left: 200px;
       xmargin-top: -100vh;
       border: 3px solid black;
+      box-sizing: border-box;
     }
     h2{
       margin: auto;
@@ -58,17 +60,18 @@
       background-color: antiquewhite;
       overflow: hidden;
       width: 100%;
-      height: calc(100vh - 88px);
+      height: calc(100vh - 80px);
       xmargin-left: 200px;
-      overflow: auto;
+      overflow: auto;/*文本包含下滑，这个优先级覆盖了上面的overflow:hidden导致出现行内块元素外出的空间留白*/
       border: 3px solid black;
-      border-top: 0;
-      border-bottom: 0;
+      box-sizing: border-box;/*边框border的像素超出页面用box形成边框盒使内元素自适应*/
+      display:block;/*触发BFC条件，将行内块锁起来*/
       
     }
     .d p{
       margin: auto;
       padding: 20px;
+      overflow: hidden;/*触发BFC,使内容里面的元素不会跳出影响外面的布局*/
     }
     .e{
       background-color: pink;
