@@ -143,3 +143,191 @@
     var a=2**n
     console.log(a)
 </script>
+<script type="" id="ch0104/01">
+    var n=Number(prompt('n'))
+    if(n>0){
+        console.log('positive')
+    }else if(n=0){
+        console.log('zero')
+    }else{
+        console.log('negative')
+    }
+</script>
+<script type="" id="ch0104/02">
+    var n=Number(prompt('n'))
+    var n=Math.abs(n)
+    console.log(n.toFixed(2))
+</script>
+<script type="" id="ch0104/03">
+    var n=Number(prompt('n'))
+    if(n%2==0){
+        console.log('even')
+    }else{
+        console.log('odd')
+    }
+</script>
+<script type="" id="ch0104/04">
+    var n=Number(prompt('n'))
+    var c=n.charCodeAt()
+    if(c%2==0){
+        console.log('NO')
+    }else{
+        console.log('YES')
+    }
+</script>
+<script type="" id="ch0104/05">
+    var a=Number(prompt('a'))
+    var b=Number(prompt('b'))
+    if(a>b){
+        console.log('>')
+    }else if(a=b){
+        console.log('=')
+    }else{
+        console.log('<')
+    }
+</script>
+<script type="" id="ch0104/06">
+    var a=Number(prompt('a'))
+    if(10<=a<=99){
+        console.log('1')
+    }else{
+        console.log('0')
+    }
+</script>
+<script type="" id="ch0104/07">
+    var a=Number(prompt('a'))
+    var b=Number(prompt('b'))
+    if(a>=10||b>=20){
+        console.log('1')
+    }else{
+        console.log('0')
+    }
+</script>
+<script type="" id="ch0104/08">
+    var a=Number(prompt('a'))
+    if(a%3==0&&a%5==0){
+        console.log('YES')
+    }else{
+        console.log('NO')
+    }
+</script>
+<script type="" id="ch0104/09">
+    var a=Number(prompt('a'))
+    if(a%3==0&&a%5==0&&a%7==0){
+        console.log('3','5','7')
+    }else if(a%3==0&&a%5==0){
+        console.log('3','5')
+    }else if(a%5==0&&a%7==0){
+        console.log('5','7')
+    }else if(a%3==0&&a%7==0){
+        console.log('3','7')
+    }else{
+        console.log('n')
+    }
+</script>
+<script type="" id="ch0104/10">
+    var a=Number(prompt('a'))
+    var b=Number(prompt('b'))
+    if(a>60&&b>60){
+        console.log('0')
+    }else{
+        console.log('1')
+    }
+</script>
+<script type="" id="ch0104/11">
+    var a=Number(prompt('a'))
+    if(a!=3&&a!=5&&a!=1){
+        console.log('YES')
+    }else{
+        console.log('NO')
+    }
+</script>
+<script type="" id="ch0104/12">
+    var a=Number(prompt('a'))
+    var b=a/3+(27+23)
+    var c=a/1.2
+    if(b>c){
+        console.log('Bike')
+    }else if(c>b){
+        console.log('Walk')
+    }else{
+        console.log('All')
+    }
+</script>
+<script type="" id="ch0104/13">
+    var x=Number(prompt('x'))
+    var y1=(-1)*x+2.5
+    var y2=2-1.5*(x-3)*(x-3)
+    var y3=0.5*x-1.5
+    if(0<=x<5){
+        console.log(y1.toFixed(3))
+    }else if(5<=x<10){
+        console.log(y2.toFixed(3))
+    }else if(10<=x<20){
+        console.log(y3.toFixed(3))
+    }
+    end
+</script>
+<script type="" id="ch0104/14">
+    var weight=Number(prompt('x'))
+    var b=Number(prompt('加急请输入y'))
+    var baseFee=8
+    var overweightFee=4
+    var baseweight=1000
+    var overstandard=500
+    var urgentFee=5
+    var fee=baseFee
+    if(weight>baseweight){
+        var overweight=Math.ceil((weight-threshold)/overstandard)
+        var fee+=overweight*overstandard
+    }if(b="y"||b="Y"){
+        fee+=urgentFee
+    }
+    console.log(fee)
+</script>
+<script type="" id="ch0104/15">
+    var a=Number(prompt('a'))
+    var b=Number(prompt('b'))
+    var c=Number(prompt('c'))
+    console.log(Math.max(a,b,c))
+</script>
+<script type="" id="ch0104/16">
+    var a=Number(prompt('a'))
+    var b=Number(prompt('b'))
+    var c=Number(prompt('c'))
+    if(((a+b+c>a)||(a+b+c>b)||(a+b+c>c))&&((a+b>c)||(a+c>b)||(b+c>a))){
+        console.log("yes")
+    }else{
+        console.log("no")
+    }
+</script>
+<script type="" id="ch0104/17">
+    var a=Number(prompt('a'))
+    if((a%4==0&&a%100!==0)||(a%400==0)){
+        console.log("yes")
+    }else{
+        console.log("no")
+    }
+</script>
+<script type="" id="ch0104/19">
+    var a=Number(prompt('a'))
+    var b=Number(prompt('b'))
+    var c=prompt("c")
+    if(c="+"){
+        console.log(a+b)
+    }else if(c="-"){
+        console.log(a-b)
+    }else if(c="*"){
+        console.log(a*b)
+    }else if(c="/"){
+        console.log(a/b)
+    }
+</script>
+<script type="" id="ch0104/21">
+    var n=Number(prompt("c"))
+    var a=Number(prompt('a'))
+    var b=Number(prompt('b'))
+    var 吃掉的个数=b/a
+    console.log(n-吃掉的个数)
+</script>
+
