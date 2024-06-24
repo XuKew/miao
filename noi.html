@@ -167,8 +167,8 @@
     }
 </script>
 <script type="" id="ch0104/04">
-    var n=Number(prompt('n'))
-    var c=n.charCodeAt()
+    var c=Number(prompt('c'))
+    var c=c.charCodeAt()
     if(c%2==0){
         console.log('NO')
     }else{
@@ -246,9 +246,9 @@
     var a=Number(prompt('a'))
     var b=a/3+(27+23)
     var c=a/1.2
-    if(b>c){
+    if(b<c){
         console.log('Bike')
-    }else if(c>b){
+    }else if(b>c){
         console.log('Walk')
     }else{
         console.log('All')
@@ -266,7 +266,6 @@
     }else if(10<=x<20){
         console.log(y3.toFixed(3))
     }
-    end
 </script>
 <script type="" id="ch0104/14">
     var weight=Number(prompt('x'))
@@ -279,9 +278,9 @@
     var fee=baseFee
     if(weight>baseweight){
         var overweight=Math.ceil((weight-threshold)/overstandard)
-        var fee+=overweight*overstandard
+        var fee=overweight*overstandard
     }if(b="y"||b="Y"){
-        fee+=urgentFee
+        fee=urgentFee
     }
     console.log(fee)
 </script>
@@ -304,15 +303,15 @@
 <script type="" id="ch0104/17">
     var a=Number(prompt('a'))
     if((a%4==0&&a%100!==0)||(a%400==0)){
-        console.log("yes")
+        console.log("Y")
     }else{
-        console.log("no")
+        console.log("N")
     }
 </script>
 <script type="" id="ch0104/19">
     var a=Number(prompt('a'))
     var b=Number(prompt('b'))
-    var c=prompt("c")
+    var c=Number(prompt("c"))
     if(c="+"){
         console.log(a+b)
     }else if(c="-"){
@@ -327,7 +326,7 @@
     var n=Number(prompt("c"))
     var a=Number(prompt('a'))
     var b=Number(prompt('b'))
-    var 吃掉的个数=b/a
+    var 吃掉的个数=Math.ceil(b/a)
     console.log(n-吃掉的个数)
 </script>
 
