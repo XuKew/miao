@@ -345,7 +345,7 @@
 </script>
 <script type="" id="ch0105/01">
     var n=Number(prompt("n"))
-    var sun=0
+    var sum=0
     var c=0
     while (c<n){
         age =Number(prompt('年龄'))
@@ -354,7 +354,7 @@
     }
     console.log((sum/n).toFixed(2))
 </script>
-<script id="ch0105/02">
+<script type="ok" id="ch0105/02">
     var sum=0
     var c=0
     while(c<12){
@@ -366,7 +366,7 @@
 </script>
 <script type="" id="ch0105/03">
     var n=Number(prompt("n"))
-    var sun=0
+    var sum=0
     var c=0
     while (c<n){
         date =Number(prompt('数据'))
@@ -377,7 +377,7 @@
 </script>
 <script type="" id="ch0105/04">
     var n=Number(prompt("n"))
-    var sun=0
+    var sum=0
     var c=0
     while (c<n){
         date =Number(prompt('数据'))
@@ -391,7 +391,6 @@
     var c=0
     while (c<n){
         score =Number(prompt('成绩'))
-        console.log(score)
         c = c + 1
     }
     console.log(Math.max(score))
@@ -401,7 +400,6 @@
     var c=0
     while (c<n){
         date =Number(prompt('数值'))
-        console.log(date)
         c = c + 1
     }
     console.log(Math.max(date) - Math.min(date))
@@ -427,7 +425,7 @@
         degree =Number(prompt('度数'))
         sum=sum+degree
         c = c + 1
-    }if(sun!==180){
+    }if(sum!==180){
         third=180-sum
     }
     console.log(third)
@@ -435,7 +433,7 @@
 <script type="" id="ch0105/09">
     var m=Number(prompt("m"))
     var n=Number(prompt("n"))
-    var sum=m
+    var sum=7
     while (m <= n){
         m = m + 2
         sum = sum + m
@@ -445,12 +443,11 @@
 <script type="" id="ch0105/10">
     var m=Number(prompt("m"))
     var n=Number(prompt("n"))
-    var sum=m
-    while (m <= n){
+    var sum=0
+    do{
         m = m + 1
-    }if(m % 17 == 0){
+    }while(m<=n && m % 17 == 0){
         sum = sum + m
-        m = m + 1
     }
     console.log(sum)
 </script>
@@ -460,15 +457,17 @@
     var b=0
     var c=0
     var d=0
-    var sum=m
     while (a < k){
         var n=Number(prompt("n"))
         a = a + 1
-    }if(n==1){
+    }
+    while(n==1){
         b=b+1
-    }if(n==5){
+    }
+    while(n==5){
         c=c+1
-    }if(n==10){
+    }
+    while(n==10){
         d=d+1
     }
     console.log(b)
@@ -483,12 +482,13 @@
     while(c<n){
         a=Number(prompt('a'))
         c=c+1
-    }if(a == m){
+    }
+    while(a == m){
         b=b+1
     }
     console.log(b)
 </script>
-<script type="" id="ch0105/13">
+<script type="ok" id="ch0105/13">
     var a=Number(prompt('a'))
     var n=Number(prompt('n'))
     console.log(a**n)
@@ -497,7 +497,7 @@
     var x=Number(prompt('x'))
     var n=Number(prompt('n'))
     var sum=x*((1+0.001)**n)
-    console.log(Main.ceil(sum.toFixed(4)))
+    console.log(Math.ceil(sum.toFixed(4)))
 </script>
 <script type="" id="ch0105/15">
     var r=Number(prompt('r'))
@@ -508,7 +508,7 @@
         m=m*((100+r)/100)
         c=c+1
     }
-    console.log(m)
+    console.log(m.toFixed(0))
 </script>
 <script type="" id="ch0105/16">
     var n=Number(prompt('n'))
