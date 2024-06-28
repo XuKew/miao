@@ -387,13 +387,21 @@
     console.log(sum,(sum/n).toFixed(5))
 </script>
 <script type="" id="ch0105/05">
-    var n=Number(prompt("n"))
+    var n=+prompt("n")
+    var max = 0 //记录已经输入进来的分数中的最大值
+    var min = 1000
     var c=0
     while (c<n){
-        score =Number(prompt('成绩'))
+        var num =+prompt('成绩')
+        if(num > max) {
+            max = num
+        }
+        if(num<min){
+            min=num
+        }
         c = c + 1
     }
-    console.log(Math.max(score))
+    console.log(num)
 </script>
 <script type="" id="ch0105/06">
     var n=Number(prompt("n"))
@@ -405,38 +413,45 @@
     console.log(Math.max(date) - Math.min(date))
 </script>
 <script type="" id="ch0105/07">
-    var n=Number(prompt("n"))
-    var sum=0
+    var n=+prompt("n")
+    var sumGold=0
+    var sumSilver=0
+    var sumCopper=0
     var c=0
     while (c<n){
-        gold =Number(prompt('金牌'))
-        silver =Number(prompt('银牌'))
-        bronze =Number(prompt('铜牌'))
-        sum = gold + silver + bronze
+        gold =+prompt('金牌')
+        silver =+prompt('银牌')
+        copper =+prompt('铜牌')
+        sumGold=sumGold+gold
+        sumSilver=sumSilver+silver
+        sumCopper=sumCopper+copper
         c = c + 1
     }
-    console.log(''+gold+silver+bronze+sum)
+    var sum=sumCopper+sumGold+sumSilver
+    console.log()
 </script>
 <script type="" id="ch0105/08">
-    var n=Number(prompt("n"))
+    var n=+prompt("n")
+    var sumAngle=(n-2)*180
     var sum=0
     var c=0
-    while (c<n){
-        degree =Number(prompt('度数'))
-        sum=sum+degree
+    while (c<n-1){
+        var angle =+prompt('度数')
+        sum=sum+angle
         c = c + 1
-    }if(sum!==180){
-        third=180-sum
     }
-    console.log(third)
+    console.log(sumAngle - sum)
 </script>
 <script type="" id="ch0105/09">
     var m=Number(prompt("m"))
     var n=Number(prompt("n"))
-    var sum=7
-    while (m <= n){
-        m = m + 2
-        sum = sum + m
+    var sum=0
+    var c=m//c从m开始，小于等于n，每次加1，将遍历M到n
+    while (c <= n){
+        if(c%2==1){//c是奇数的时候
+            sum=sum+c
+        }
+        c=c+1
     }
     console.log(sum)
 </script>
@@ -444,10 +459,12 @@
     var m=Number(prompt("m"))
     var n=Number(prompt("n"))
     var sum=0
-    do{
-        m = m + 1
-    }while(m<=n && m % 17 == 0){
-        sum = sum + m
+    while(m<=n){
+        m=m+1
+        
+        if(m % 17 == 0){
+            sum = sum + m
+        }
     }
     console.log(sum)
 </script>
@@ -475,18 +492,15 @@
     console.log(d)
 </script>
 <script type="" id="ch0105/12">
-    var n=Number(prompt('n'))
-    var m=Number(prompt('m'))
+    var n=+prompt('n')
+    var m=+prompt('m')
     var c=0
-    var b=0
-    while(c<n){
-        a=Number(prompt('a'))
+    for (var i=0;i<n,i++)
+      var num=+prompt('num')
+      if(num==m){
         c=c+1
     }
-    while(a == m){
-        b=b+1
-    }
-    console.log(b)
+    console.log(c)
 </script>
 <script type="ok" id="ch0105/13">
     var a=Number(prompt('a'))
@@ -494,15 +508,18 @@
     console.log(a**n)
 </script>
 <script type="" id="ch0105/14">
-    var x=Number(prompt('x'))
-    var n=Number(prompt('n'))
-    var sum=x*((1+0.001)**n)
-    console.log(Math.ceil(sum.toFixed(4)))
+    var x=+prompt('x')
+    var n=+prompt('n')
+    var 增长 =1.001
+    for (var i = 0; i<n; i++) {
+        x = x * 增长
+    }
+    console.log(Math.ceil(x.toFixed(4)))
 </script>
 <script type="" id="ch0105/15">
-    var r=Number(prompt('r'))
-    var m=Number(prompt('m'))
-    var y=Number(prompt('y'))
+    var r=+prompt('r')
+    var m=+prompt('m')
+    var y=+prompt('y')
     var c=0
     while(c<y){
         m=m*((100+r)/100)
@@ -511,19 +528,89 @@
     console.log(m.toFixed(0))
 </script>
 <script type="" id="ch0105/16">
-    var n=Number(prompt('n'))
-    var k=Number(prompt('k'))
-    var house=200
-    var sum=0
-    while(){
-
+    var salary=+prompt('年薪')
+    var ratio=+prompt('房价增长')
+    var totalsalary=0
+    var price=200
+    var buyed = false //表示是否买下来房
+    for (var i = 1; i <= 20; i++) {
+        totalsalary = totalsalary + salary
+        price = price * (1 + ratio / 100)
+        if (totalsalary >= price) {
+            console.log(i)
+            buyed = true
+            break
+        }
+    }
+    if(!buyed){
+    console.log(Impossible)
     }
 </script>
-<script type="" id="ch0105/11">
+<script type="" id="ch0105/17">
+    var k=+promp('k')
+    var a = 1
+    var b = 1
+    for (var i = 0; i < k; i++){
+        c = a + b
+        a = b
+        b = c
+    }
+    console.log(c)
 </script>
-<script type="" id="ch0105/11">
+<script type="" id="ch0105/18">
+    var 
 </script>
-<script type="" id="ch0105/11">
+<script type="" id="ch0105/19">
+    var n = +prompt()
+    var totalTime = 0
+    for (var i == 0; i < n;)
 </script>
+<script type="" id="ch0105/20">
+    var h = +prompt('h')
+    var totalRun = 0
+    var currenTh = h //不使用h，后面要将初次高度减去
+    for (var i = 0;i < 10; i++) {
+        totalRun = totalRun + currenTh*2
+        currenTh = currenTh / 2
+    }
+    totalRun = totalRun - h //减去初次高度，将第一次在计算成一个完整的上下次过程，实际过程中只有下落，所以减去一次h上升的高度
+    console.log(totalRun, currenTh)
+</script>
+<script type="" id="ch0105/21">
+    var n = +prompt('n')
 
+</script>
+<script type="" id="ch0105/22">
+    var moneyOnHand = 0
+    var saved = 0 //已经存在妈妈那里的钱
+    for (var i = 1;i <= 12; i++) {
+    moneyOnHand = moneyOnHand + 300
+    var budget = +prompt() //输入他的预算
+    var stopped =false
+    //手上的钱不够预算
+    if (moneyOnHand < budget) {
+        console.log(-i)
+        stopped = true
+        break
+    }
+    moneyOnHand = moneyOnHand - budget //月末花完钱
+    
+    if (moneyOnHand >= 100) {
+        var rest = moneyOnHand % 100//计算剩余的钱(零头)
+        saved = saved + (moneyOnHand - rest)
+        moneyOnHand = rest
+    }
+    }
+    if (!stopped){
+    console.log(moneyOnHand + saved * 1.2)
+    }
+</script>
+<script type="" id="ch0105/19">
 
+</script>
+<script type="" id="ch0105/19">
+
+</script>
+<script type="" id="ch0105/19">
+
+</script>
