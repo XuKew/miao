@@ -495,7 +495,7 @@
     var n=+prompt('n')
     var m=+prompt('m')
     var c=0
-    for (var i=0;i<n,i++)
+    for (var i=0;i<n;i++)
       var num=+prompt('num')
       if(num==m){
         c=c+1
@@ -547,7 +547,7 @@
     }
 </script>
 <script type="" id="ch0105/17">
-    var k=+promp('k')
+    var k=+prompt('k')
     var a = 1
     var b = 1
     for (var i = 0; i < k; i++){
@@ -563,7 +563,7 @@
 <script type="" id="ch0105/19">
     var n = +prompt()
     var totalTime = 0
-    for (var i == 0; i < n;)
+    for (var i = 0; i < n;)
 </script>
 <script type="" id="ch0105/20">
     var h = +prompt('h')
@@ -605,12 +605,171 @@
     console.log(moneyOnHand + saved * 1.2)
     }
 </script>
-<script type="" id="ch0105/19">
+<script type="" id="ch0105/23">
+    var m = +prompt('m')//药品总量
+    var n = +prompt('n')//取药的人数
+    var stopped = false
+    for (var i = 0;i < n; i++) {
+        var hope =+prompt('')//希望拿到的药品数量
+        m = m - hope
+        if (m < hope){
+            stopped = true
+            console.log(i) //输出有几个人拿到药
+            break
+        }
+    }
+</script>
+<script type="" id="ch0105/24">
+    var n = +prompt('') //测量几次
+    for (var i = 1;i < n + 1; i++) {
+         收缩 = +prompt('') //血压收缩
+         舒张 = +prompt('') //血压舒张
+         if (收缩 >140 || 收缩 < 90) {
+            console.log(i)
+            break
+         }
+         if(舒张 >90 || 舒张 < 60){
+            console.log(i)
+            break
+         }
+    }
+</script>
+<script type="" id="ch0105/25">
+    for (var i = 0;i < 999;i++) {
+        var a7 = i % 7 //7进制个位数
+        var b7 =(i - a7) / 7 %7  //7进制的十位数
+        var c7 =(i - a7 - b7 *7) / 7 / 7 //7进制的百位数
+        var a9 = i % 9 //9进制个位数
+        var b9 =(i - a9) / 9 % 9  //9进制的十位数
+        var c9 =(i - a9 - b9 *9) / 9 / 9 //9进制的百位数
+
+        if (a7 == c9 && b7 == b9 && c7 == a9) {
+            console.log(i)
+            console.log("" + c7 + b7 + a7)
+            console.log("" + c9 + b9 + a9)
+            break;
+        }
+    }
+</script>
+<script type="" id="ch0105/26">
+    var n = +prompt('n') //输入n个数字  
+    var c = 0
+    for (var i = 0; i < n; i++) {
+        number = +prompt('') //输入验算的四位数
+        个 = number % 10 //个位数
+        十 = (number - 个) / 10 % 10 //十位
+        百 = (number - 个 - 十 *10) / 100 % 10 //百位
+        千 = (number - 个 - 十 *10 - 百 *100) / 1000 %10 //千位
+        sum = 个 - 千 - 百 - 十 //题目结果
+        //题目要求 结果大于0时候满足条件
+        if (sum > 0) {
+            c++
+        }
+    }
+    console.log(c++)
+</script>
+<script type="" id="ch0105/27">
+    var k = +prompt('')
+    var sum = 0
+    for (var i = 1; i++) {
+        sum += 1 / i
+        if (sum > k) {
+            break
+        }
+    }
+    console.log(i)
+</script>
+<script type="" id="ch0105/28">
+    var n = +prompt('') 
+    do{
+        var digit = n % 10
+        console.log(digit)
+        n = (n - digit) / 10
+    }while(n > 0)
+</script>
+<script type="" id="ch0105/29">
+    var n  = +prompt('')
+    var sign = 1
+    if (n < 0) {
+        sign = -1
+        n = -n
+    }
+    var result = 0
+    while (n > 0) {
+        var digit = n % 10
+        n = (n - digit) /10
+        result = result * 10 +digit
+    }
+    console.log(result * sign)
+</script>
+<script type="" id="ch0105/30">
+    var m =+prompt('')
+    var k =+prompt('')
+    while (n > 0) {
+        var digit = n % 10 //取出n的个位数
+       if (digit == 3) {
+        count++
+       } 
+       n = (n - digit) /10 //把你的个数去掉
+    }
+    if (count == k) {
+        console.log('YES')
+    }else{
+        console.log('NO')
+    }
 
 </script>
-<script type="" id="ch0105/19">
-
+<script type="" id="ch0105/31">
+    var n =+prompt('')
+    var m =+prompt('')
+    for (var i = 0;i < m; i++) {
+    }
 </script>
-<script type="" id="ch0105/19">
-
+<script type="" id="ch0105/32">
+    var n =+prompt('')
+    var a = 1
+    var b = 1
+    for (var i = 0;i < n; i++) {
+        b = b + a
+        a = b - a
+        sum += b/a
+    }
+    console.log(sum.toFixed(4))
+</script>
+<script type="" id="ch0105/33">
+    var n =+prompt('')
+    var sum = 0
+    var sign = 1
+    for (var i = 0;i < n;i++) {
+        sum += 1 / i * sign
+        sign = sign * -1
+    }
+    console.log(sign.toFixed(4))
+</script>
+<script type="" id="ch0105/35">
+    var n =+prompt('')
+    var sum = 0
+    var factorial = 1 //factorial是阶乘的意思
+    for (var i = 1;i < n;i++) {
+        factorial *= i
+        sum += factorial
+    }
+    console.log(sum)
+</script>
+<script id="ch0105/38">
+    var n = +prompt()
+    for (var i = 0; i < n; i++) {
+        var exp = +prompt()
+        var e = exp
+        if (exp == 0) {
+            prompt()
+            console.log(0)
+        } else {
+            for (var j = 0; j < exp; j++) {
+                var c = +prompt()
+                console.log(c * exp)
+                exp--
+            }
+        }
+    }
 </script>
