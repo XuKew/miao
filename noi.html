@@ -390,8 +390,7 @@
     var n=+prompt("n")
     var max = 0 //记录已经输入进来的分数中的最大值
     var min = 1000
-    var c=0
-    while (c<n){
+    for (var i = 0;i < n; i++){
         var num =+prompt('成绩')
         if(num > max) {
             max = num
@@ -399,18 +398,23 @@
         if(num<min){
             min=num
         }
-        c = c + 1
     }
-    console.log(num)
+    console.log(max)
 </script>
 <script type="" id="ch0105/06">
-    var n=Number(prompt("n"))
-    var c=0
-    while (c<n){
+    var n=+prompt("n")
+    var max = 0 //记录已经输入进来的数字中的最大值
+    var min = 1000 //记录已经输入进来的数字中的最大值，初始值为最大值，这样进来的一定比它小
+    for (var i = 0;i < n; i++){
         date =Number(prompt('数值'))
-        c = c + 1
+        if (date > max) {
+            max = date
+        }
+        if (date < min) {
+            min = date
+        }
     }
-    console.log(Math.max(date) - Math.min(date))
+    console.log(max - min)
 </script>
 <script type="" id="ch0105/07">
     var n=+prompt("n")
@@ -418,17 +422,16 @@
     var sumSilver=0
     var sumCopper=0
     var c=0
-    while (c<n){
+    for (var i = 0;i < n; i++){
         gold =+prompt('金牌')
         silver =+prompt('银牌')
         copper =+prompt('铜牌')
         sumGold=sumGold+gold
         sumSilver=sumSilver+silver
         sumCopper=sumCopper+copper
-        c = c + 1
     }
     var sum=sumCopper+sumGold+sumSilver
-    console.log()
+    console.log(sumGold,sumSilver,sumCopper,sum)
 </script>
 <script type="" id="ch0105/08">
     var n=+prompt("n")
@@ -443,15 +446,15 @@
     console.log(sumAngle - sum)
 </script>
 <script type="" id="ch0105/09">
-    var m=Number(prompt("m"))
-    var n=Number(prompt("n"))
-    var sum=0
-    var c=m//c从m开始，小于等于n，每次加1，将遍历M到n
+    var m = Number(prompt("m"))
+    var n = Number(prompt("n"))
+    var sum = 0
+    var c = m //c从m开始，小于等于n，每次加1，将遍历M到n
     while (c <= n){
-        if(c%2==1){//c是奇数的时候
-            sum=sum+c
+        if(c % 2 == 1){//c是奇数的时候
+            sum = sum + c
         }
-        c=c+1
+        c = c + 1
     }
     console.log(sum)
 </script>
@@ -473,33 +476,32 @@
     var a=0
     var b=0
     var c=0
-    var d=0
-    while (a < k){
+    for (var i = 0;i < k; i++) {
         var n=Number(prompt("n"))
-        a = a + 1
+        if (n == 1) {
+            a++
+        }
+        if (n == 5) {
+            b++
+        }
+        if (n == 10) {
+            c++
+        }
     }
-    while(n==1){
-        b=b+1
-    }
-    while(n==5){
-        c=c+1
-    }
-    while(n==10){
-        d=d+1
-    }
+    console.log(a)
     console.log(b)
     console.log(c)
-    console.log(d)
 </script>
 <script type="" id="ch0105/12">
     var n=+prompt('n')
     var m=+prompt('m')
     var c=0
-    for (var i=0;i<n;i++)
+    for (var i = 0; i < n; i++){
       var num=+prompt('num')
-      if(num==m){
-        c=c+1
+      if(num == m){
+        c++
     }
+}
     console.log(c)
 </script>
 <script type="ok" id="ch0105/13">
@@ -514,7 +516,7 @@
     for (var i = 0; i<n; i++) {
         x = x * 增长
     }
-    console.log(Math.ceil(x.toFixed(4)))
+    console.log(x.toFixed(4))
 </script>
 <script type="" id="ch0105/15">
     var r=+prompt('r')
@@ -525,45 +527,71 @@
         m=m*((100+r)/100)
         c=c+1
     }
-    console.log(m.toFixed(0))
+    console.log(Math.floor(m))
 </script>
 <script type="" id="ch0105/16">
     var salary=+prompt('年薪')
     var ratio=+prompt('房价增长')
-    var totalsalary=0
+    var totalsalary=0 //存下的钱
     var price=200
     var buyed = false //表示是否买下来房
     for (var i = 1; i <= 20; i++) {
         totalsalary = totalsalary + salary
-        price = price * (1 + ratio / 100)
+        
         if (totalsalary >= price) {
             console.log(i)
             buyed = true
             break
         }
+        price = price * (1 + ratio / 100)
     }
     if(!buyed){
-    console.log(Impossible)
+    console.log('Impossible')
     }
 </script>
 <script type="" id="ch0105/17">
     var k=+prompt('k')
-    var a = 1
-    var b = 1
+    var a = 1 //通过反推得出第一项之前的两个数
+    var b = 0
     for (var i = 0; i < k; i++){
-        c = a + b
-        a = b
+        c = a + b //c为第一项，即数列的a1
+        a = b //a和b往后移一位，然后c又到下一位
         b = c
     }
     console.log(c)
 </script>
+如何不通过第三个变量，交换a和b的值
+a=123,b=456
+b=a+b;a=b-a;b=b-a
 <script type="" id="ch0105/18">
-    var 
+    var n = +prompt('')
+    var total = +prompt() //鸡尾酒疗法总人数
+    var effect = +prompt() //鸡尾酒疗法有效人数
+    var r = effect / total //鸡尾酒的有效率x
+    for (var i = 1; i < n; i++) {
+        var t = +prompt() //其他组疗法的总人数
+        var e = +prompt() //其他组疗法的有效人数
+        var thisR = e / t //其他疗法的有效率y
+        if (thisR - r > 0.05) {
+            console.log('better')
+        }else if (r - thisR > 0.05) {
+            console.log('worse')   
+        }else{
+            console.log('same')
+        }
+    }
 </script>
 <script type="" id="ch0105/19">
     var n = +prompt()
     var totalTime = 0
-    for (var i = 0; i < n;)
+    for (var i = 0; i < n; i++) {
+        var x = +prompt()
+        var y = +prompt()
+        var amount = +prompt()
+        var distance = Math.sqrt(x * x + y *y)
+        totalTime = totalTime + distance / 50 *2 +amount * 1.5
+    }
+    console.log(Math.ceil(totalTime))
 </script>
 <script type="" id="ch0105/20">
     var h = +prompt('h')
