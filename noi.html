@@ -980,3 +980,125 @@ b=a+b;a=b-a;b=b-a
     }
     console.log(sum)
 </script>
+<script id="narcissistic">
+    //水仙花数是一个自幂数字:3位数时，每个数字的3次幂之和等于它本身;
+    function narcissistic(x) {
+        var ge = 0 //求出x中的每个数
+        var n = x
+        var sum = 0 //三位数中每个数的的幂之和
+        while (n > 0) {
+            ge = n % 10
+            sum += ge ** 3
+            n = (n - ge) / 10
+        }
+        return sum === x
+    }
+    console.log(sum)
+</script>
+<script id="narcissistics">
+    //输出10000以内的水仙花
+    function narcissistic(x) {
+        var c = 0 //计算出十进制数的几位数
+        var ge = 0 //求出x中的每个数
+        var n = x //计算总数sum时用的数，不影响到最后的比较sum=x
+        var temp = x //计算几位数c时用的数，不影响到sum的计算和最后的比较
+        var sum = 0 //三位数中每个数的的幂之和
+        //下面是计算x是十进制的几位数
+        while (temp > 0) {
+            ge = temp % 10
+            temp = (temp - ge) / 10
+            c++ //算出几位数
+        }
+        // 下面是计算sum每个数的幂之和
+        while (n > 0) {
+            ge = n % 10
+            sum += ge ** c
+            n = (n - ge) / 10
+        }
+        return sum === x
+    }
+    for (var i = 0; i < 10000; i++) {
+        if (narcissistic(i)) {
+            console.log(i)
+        }
+    }
+</script>
+<script id="complete-number">
+    //完全数：一个数的因子(不包括自身)之和跟它自身相同，它既为完全数 例如完全数6 它的因子(这个数的约数)有1,2,3,6; 因子之和1+2+3=6
+
+    //判断x是否为n的因子
+    function isFactor(x, n) {
+        return n % x == 0
+    }
+    function isCompleteNumber(n) {
+        var sum = 1 //1一定是任何整数的因子
+        for (var i = 2; i < n; i++) {
+            if (n % i == 0) {
+                sum += i
+            }
+        }
+        return sum == n //就是if(sum == n) 的优化版，因为等于就是true，不等于就是false
+    }
+</script>
+<script id="complete-numbers">
+    function isFactor(x, n) {
+        return n % x == 0
+    }
+    function isCompleteNumber(n) {
+        var sum = 1 //1一定是任何整数的因子
+        for (var i = 2; i < n; i++) {
+            if (n % i == 0) {
+                sum += i
+            }
+        }
+        return sum == n
+    }
+    for (var i = 0; i < 10000; i++) {
+        if (isCompleteNumber(i)) {
+            console.log(i)
+        }
+    }
+</script>
+<script id="prime">
+    //判断一个数为素数
+    function isPrime(n) {
+        //因为大于二分之n的数不可能被除尽   
+        for (var i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+                return false
+            }
+            return true
+        }
+
+    }
+</script>
+<script id="primes">
+    //输出100以内的素数
+    function isPrime(n) {
+        //因为大于二分之n的数不可能被除尽   
+        for (var i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+                return false
+            }
+            return true
+        }
+    }
+    for (var i = 0; i < 100; i++) {
+        if (isPrime(i)) {
+            console.log(i)
+        }
+    }
+</script>
+<script id="palindrom">
+    //判断一个数为回文数
+    function isPalindrom(n) {
+        var original_n = n
+        var reverse = 0 //记录n倒过来之后的值 
+        while (n > 0) {
+            var ge = n % 10
+            reverse = reverse * 10 + ge
+            n = (n - ge) / 10
+        }
+        return reverse == original_n
+    }
+</script>
