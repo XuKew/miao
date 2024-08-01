@@ -127,7 +127,7 @@ MySet.prototype.delete = function (item) {
 }
 
 // 获取集合中的元素用 c.size，它是一个getter
-Object.defineProperties(MySet.prototype, 'size'{
+Object.defineProperties(MySet.prototype, 'size', {
     get: function () {
         return this._elements.length
     }
@@ -275,7 +275,7 @@ Queue.prototype.peek = function () {
 }
 // 以及queue.size获取队列的长度
 Object.defineProperties(Queue.prototype, 'size', {
-    get: function{
+    get: function () {
         return this._length
     }
 })
