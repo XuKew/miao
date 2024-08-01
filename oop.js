@@ -199,12 +199,10 @@ Object, defineProperty(LinkedList.prototype, 'size', {
 
 // 表示一个集合（集合中元素没有序，但不能重复）
 // 构造函数可选的可以传入集合中的初始值，但会被去重后存放
-function MySet(initalValues) {
+function MySet(initalValues = []) {
   this._elements = []
   for (var val of initalValues) {
-    if (!this._elements.initalValues) {
-      this._elements.push(val)
-    }
+    this.add(val)
   }
 }
 // 向集合中添加元素
