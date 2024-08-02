@@ -131,13 +131,14 @@ LinkedList.prototype.append = function (val) {
   this._length++
   if (this._head == null) {
     this._head = node
-    return
+    return this
   }
   var p = this._head
   while (p.next) {
     p = p.next
   }
   p.next = node
+  return this
 }
 // 返回链表末尾结点的值，并删除末尾结点
 LinkedList.prototype.pop = function () {
@@ -166,6 +167,7 @@ LinkedList.prototype.prepend = function (val) {
   }
   this._length++
   this._head = node
+  return this
 }
 // 返回链表第一个结点的值，并删除这一个结点
 LinkedList.prototype.shift = function () {
@@ -210,6 +212,7 @@ MySet.prototype.add = function (item) {
   if (this._elements.includes(item)) {
     this._elements.push(item)
   }
+  return this
 }
 // 从集合中删除item元素
 MySet.prototype.delete = function (item) {
