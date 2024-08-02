@@ -140,7 +140,7 @@ LinkedList.prototype.append = function (val) {
   p.next = node
 }
 // 返回链表末尾结点的值，并删除末尾结点
-LinkedList.prototype.prepend = function () {
+LinkedList.prototype.pop = function () {
   if (this._head == null) {
     return undefined
   }
@@ -159,7 +159,7 @@ LinkedList.prototype.prepend = function () {
   return result
 }
 // 在链表头部新增一个结点，值为val
-LinkedList.prototype.unshift = function (val) {
+LinkedList.prototype.prepend = function (val) {
   var node = {
     val: val,
     next: this._head,
