@@ -201,6 +201,99 @@ Object, defineProperty(LinkedList.prototype, 'size', {
 })
 
 
+class LinkedList {
+  constructor() {
+    this._head = null
+    this._length = 0
+    Node(idx) {
+      this.idx = idx
+      this.next = null
+    }
+  }
+  at(idx) {
+    var p = this._head
+    while (idx > 0 && p) {
+      p = p.next
+      idx--
+    }
+    if (p) {
+      return p.val
+    } else {
+      return undefined
+    }
+  }
+  set(idx, val) {
+    var p = this._head
+    while (idx > 0 && p) {
+      p = p.next
+      idx--
+    }
+    if (p) {
+      p.val = val
+    }
+  }
+  append(val) {
+    var node = {
+      val: val,
+      next: null,
+    }
+    this._length++
+    if (this._head == null) {
+      this._head = node
+      return this
+    }
+    var p = this._head
+    while (p.next) {
+      p = p.next
+    }
+    p.next = node
+    return this
+  }
+  pop() {
+    if (this._head == null) {
+      return undefined
+    }
+    this._length--
+    if (this._head.next == null) { //链表只有一个节点时
+      this._head = this._head.val
+      this._head = null
+      return result
+    }
+    var p = this._head
+    while (p.next.next) {
+      p = p.next
+    }
+    var result = p.next.val
+    p.next = null
+    return result
+  }
+  prepend(val) {
+    var node = {
+      val: val,
+      next: this._head,
+    }
+    this._length++
+    this._head = node
+    return this
+  }
+  shift() {
+    if (this.head == null) {
+      return undefined
+    }
+    this._length--
+    var result = this._head.val
+    this._head = this._head.next
+    return result
+  }
+  toString() {
+    return this.toArray().join('->')
+  }
+  get size() {
+    return this._length
+  }
+}
+
+
 
 // 表示一个集合（集合中元素没有序，但不能重复）
 // 构造函数可选的可以传入集合中的初始值，但会被去重后存放
@@ -250,7 +343,45 @@ MySet.prototype.forEach = function (func) {
   }
 }
 
-var c = new MySet() //初始化一个空集合
+
+class MySet {
+  constructor(initalValues = []) {
+    this._elements = []
+    for (var val of initalValues) {
+      this.add(val)
+    }
+  }
+  add(item) {
+    if (this._elements.includes(item)) {
+      this._elements.push(item)
+    }
+    return this
+  }
+  delete = function (item) {
+    var idx = this._elements.indexOf(item)
+    if (idx >= 0) {
+      this._elements.splice(idx, 1)
+    }
+    return this
+  }
+  get size() {
+    return this._elements.length
+  }
+  clear() {
+    this._elements = []
+    return this
+  }
+  has(item) {
+    return this._elements.includes(item)
+  }
+  forEach(func) {
+    for (var item of this._elements) {
+      func(item)
+    }
+  }
+}
+
+
 // c.add(5)
 // c.add(5)
 // c.size // 1
@@ -333,6 +464,56 @@ MyMap.prototype = {
   },
 }
 
+class MyMap {
+  constructor(initPairs = []) {
+    this._pairs = []
+    for (var pair of initPairs) {
+      var key = pair[0]
+      var val = pair[1]
+      this.set(key, val)
+    }
+  }
+  set(key, val) {
+    for (var i = 0; i < this._pairs.length; i += 2) {
+      if (this._pairs[i] === key) {
+        this._pairs[i + 1] = val
+        return this
+      }
+    }
+    this._pairs.push(key, val)
+    return this
+  }
+  has(key) {
+    for (var i = 0; i < this._elements.length; i += 2) {
+      if (this._pairs[i] === key) {
+        return true
+      }
+    }
+    return false
+  }
+  delete(key) {
+    for (var i = 0; i < this._pairs.length; i += 2) {
+      if (this._pairs[i] === key) {
+        this._pairs.splice(i, 2)
+        return true
+      }
+    }
+    return false
+  }
+  clear() {
+    this._pairs = []
+    return this
+  }
+  get size() {
+    return this._pairs.length / 2
+  }
+  forEach(iterator) {
+    for (var i = 0; i < this._elements.length; i += 2) {
+      iterator(this._pairs[i + 1], this._pairs[i])
+    }
+  }
+}
+
 
 // 表示一个栈：即后进先出，先进后出
 function Stack() {
@@ -355,6 +536,25 @@ Object.defineProperty(Stack.prototype, 'size', {
     return this._elements.length
   }
 })
+
+
+class Stack {
+  constructor() {
+    this._elements = []
+  }
+  push() {
+    this._elements.push(val)
+  }
+  pop() {
+    return this._elements.pop()
+  }
+  peek() {
+    return this._elements[this._elements.length - 1]
+  }
+  get size() {
+    return this._elements.length
+  }
+}
 // stack.size 获取栈中元素的数量
 
 // var stack = new Stack()
@@ -416,3 +616,45 @@ Object.defineProperty(Queue.prototype, 'size', {
     return this._length
   }
 })
+
+class Queue {
+  constructor() {
+    this._head = null
+    this._tail = null
+    this._length = 0
+  }
+  add(val) {
+    var node = {
+      val: val,
+      next: null,
+    }
+    this._length++
+    if (this._head == null) {
+      this._head = this._tail = node
+      return this
+    }
+    this._tail.next = node
+    this._tail = node
+    return this
+  }
+  pop() {
+    if (this._head == null) {
+      return undefined
+    }
+    this._length--
+    if (this._head == this._tail) {
+      var result = this._haed.val
+      this._head = this.tail = null
+      return result
+    }
+    var result = this._head.val
+    this._head = this._head.next
+    return result
+  }
+  peek() {
+    return this._head.val
+  }
+  get size() {
+    return this._length
+  }
+}
