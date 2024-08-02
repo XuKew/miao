@@ -1,29 +1,50 @@
 // 表示一个二维向量
-function Vector(x, y) {
-  this.x = x
-  this.y = y
-}
-Vector.prototype.plus = function (v) {
-  var x = this.x + v.x
-  var y = this.y + v.y
-  return new Vector(x, y)
-}
-Vector.prototype.minus = function (v) {
-  var x = this.x - v.x
-  var y = this.y - v.y
-  return new Vector(x, y)
-}
-// Vector.prototype.length = function () {
-// return Math.sqrt(this.x * this.x + this.y * this.y)
-// }
-Object.defineProperty(Vector.prototype, 'length', {
-  get: function () {
+//function Vector(x, y) {
+//  this.x = x
+//  this.y = y
+//}
+//Vector.prototype.plus = function (v) {
+//  var x = this.x + v.x
+//  var y = this.y + v.y
+//  return new Vector(x, y)
+//}
+//Vector.prototype.minus = function (v) {
+//  var x = this.x - v.x
+//  var y = this.y - v.y
+//  return new Vector(x, y)
+//}
+//// Vector.prototype.length = function () {
+//// return Math.sqrt(this.x * this.x + this.y * this.y)
+//// }
+//Object.defineProperty(Vector.prototype, 'length', {
+//  get: function () {
+//    return Math.sqrt(this.x * this.x + this.y * this.y)
+//  }
+//})
+
+class Vector {
+  constructor(x, y) {
+    this.x = x
+    this.y = y
+  }
+  plus(v) {
+    var x = this.x + v.x
+    var y = this.y + v.y
+    return new Vector(x, y)
+  }
+  minus(v) {
+    var x = this.x - v.x
+    var y = this.y - v.y
+    return new Vector(x, y)
+  }
+  get length() {
     return Math.sqrt(this.x * this.x + this.y * this.y)
   }
-})
+}
 
-var v1 = new Vector(1, 2)
-var v2 = new Vector(3, -4)
+
+//var v1 = new Vector(1, 2)
+//var v2 = new Vector(3, -4)
 
 // var v3 = v1.plus(v2)
 // var v4 = v2.minus(v1)
@@ -33,39 +54,78 @@ var v2 = new Vector(3, -4)
 
 
 // 表示一个复数(complex number)
-function Complex(real, imag) {
-  this.real = real
-  this.imag = imag
-}
-Complex.prototype.plus = function (c) {
-  var real = this.real + c.real
-  var imag = this.imag + c.imag
-  return new Complex(real, imag)
-}
-Complex.prototype.minus = function (c) {
-  var real = this.real - c.real
-  var imag = this.imag - c.imag
-  return new Complex(real, imag)
-}
-Complex.prototype.multiple = function (c) {
-  var real = this.real * c.real - this.imag * c.imag
-  var imag = this.real * c.imag + this.imag * c.real
-  return new Complex(real, imag)
-}
-Complex.prototype.div = function (c) {
-  var helper = new Complex(c.real, -c.imag)
-  var fenmu = c.multiple(helper).real
-  var fenzi = this.multiple(helper)
+//function Complex(real, imag) {
+//  this.real = real
+//  this.imag = imag
+//}
+////加
+//Complex.prototype.plus = function (c) {
+//  var real = this.real + c.real
+//  var imag = this.imag + c.imag
+//  return new Complex(real, imag)
+//}
+////减
+//Complex.prototype.minus = function (c) {
+//  var real = this.real - c.real
+//  var imag = this.imag - c.imag
+//  return new Complex(real, imag)
+//}
+////乘
+//Complex.prototype.multiple = function (c) {
+//  var real = this.real * c.real - this.imag * c.imag
+//  var imag = this.real * c.imag + this.imag * c.real
+//  return new Complex(real, imag)
+//}
+////除
+//Complex.prototype.div = function (c) {
+//  var helper = new Complex(c.real, -c.imag)
+//  var fenmu = c.multiple(helper).real
+//  var fenzi = this.multiple(helper)
+//
+//  var real = fenzi.real / fenmu
+//  var imag = fenzi.imag / fenmu
+//
+//  return new Complex(real, imag)
+//}
+//Complex.prototype.toString = function () {
+//  return '' + this.real + (this.imag > 0 ? "+" : '') + this.imag + 'i'
+//}
 
-  var real = fenzi.real / fenmu
-  var imag = fenzi.imag / fenmu
 
-  return new Complex(real, imag)
-}
-Complex.prototype.toString = function () {
-  return '' + this.real + (this.imag > 0 ? "+" : '') + this.imag + 'i'
-}
+class Complex {
+  constructor(real, imag) {
+    this.real = real
+    this.imag = imag
+  }
+  plus(c) {
+    var real = this.real + c.real
+    var imag = this.imag + c.imag
+    return new Complex(real, imag)
+  }
+  minus(c) {
+    var real = this.real - c.real
+    var imag = this.imag - c.imag
+    return new Complex(real, imag)
+  }
+  multiple(c) {
+    var real = this.real * c.real - this.imag * c.imag
+    var imag = this.real * c.imag + this.imag * c.real
+    return new Complex(real, imag)
+  }
+  div(c) {
+    var helper = new Complex(c.real, -c.imag)
+    var fenmu = c.multiple(helper).real
+    var fenzi = this.multiple(helper)
 
+    var real = fenzi.real / fenmu
+    var imag = fenzi.imag / fenmu
+
+    return new Complex(real, imag)
+  }
+  toString() {
+    return '' + this.real + (this.imag > 0 ? "+" : '') + this.imag + 'i'
+  }
+}
 // var c1 = new Complex(4, 5)
 // var c2 = new Complex(1, -2)
 
@@ -80,6 +140,8 @@ Complex.prototype.toString = function () {
 // function Matrix() {
 
 // }
+// assert(c.real == 0.5, 'a/b的实部应该为0.5')
+// assert(c.imag == 0, 'a/b的虚部应该为0')
 
 
 // =================================================================
@@ -93,122 +155,114 @@ Complex.prototype.toString = function () {
 // =================================================================
 
 // 表示一个单向链表
-function LinkedList() {
-  this._head = null
-  this._length = 0
-}
-function Node(idx) {
-  this.idx = idx
-  this.next = null
-}
-// 返回链表第idx个结点的值
-LinkedList.prototype.at = function (idx) {
-  var p = this._head
-  while (idx > 0 && p) {
-    p = p.next
-    idx--
-  }
-  if (p) {
-    return p.val
-  } else {
-    return undefined
-  }
-}
-// 设置链表第idx项的值为val
-LinkedList.prototype.set = function (idx, val) {
-  var p = this._head
-  while (idx > 0 && p) {
-    p = p.next
-    idx--
-  }
-  if (p) {
-    p.val = val
-  }
-}
-// 在链表末尾新增一个结点，值为val
-LinkedList.prototype.append = function (val) {
-  var node = {
-    val: val,
-    next: null,
-  }
-  this._length++
-  if (this._head == null) {
-    this._head = node
-    return this
-  }
-  var p = this._head
-  while (p.next) {
-    p = p.next
-  }
-  p.next = node
-  return this
-}
-// 返回链表末尾结点的值，并删除末尾结点
-LinkedList.prototype.pop = function () {
-  if (this._head == null) {
-    return undefined
-  }
-  this._length--
-  if (this._head.next == null) { //链表只有一个节点时
-    this._head = this._head.val
-    this._head = null
-    return result
-  }
-  var p = this._head
-  while (p.next.next) {
-    p = p.next
-  }
-  var result = p.next.val
-  p.next = null
-  return result
-}
-// 在链表头部新增一个结点，值为val
-LinkedList.prototype.prepend = function (val) {
-  var node = {
-    val: val,
-    next: this._head,
-  }
-  this._length++
-  this._head = node
-  return this
-}
-// 返回链表第一个结点的值，并删除这一个结点
-LinkedList.prototype.shift = function () {
-  if (this.head == null) {
-    return undefined
-  }
-  this._length--
-  var result = this._head.val
-  this._head = this._head.next
-  return result
-}
-LinkedList.prototype.toArray = function () {
-  var result = []
-  var p = this._head
-  while (p) {
-    result.push(p.val)
-    p = p.next
-  }
-  return result
-}
-LinkedList.prototype.toString = function () {
-  return this.toArray().join('->')
-}
-Object, defineProperty(LinkedList.prototype, 'size', {
-  get: function () {
-    return this._length
-  }
-})
+//function LinkedList() {
+//  this._head = null
+//  this._length = 0
+//}
+//// 返回链表第idx个结点的值
+//LinkedList.prototype.at = function (idx) {
+//  var p = this._head
+//  while (idx > 0 && p) {
+//    p = p.next
+//    idx--
+//  }
+//  if (p) {
+//    return p.val
+//  } else {
+//    return undefined
+//  }
+//}
+//// 设置链表第idx项的值为val
+//LinkedList.prototype.set = function (idx, val) {
+//  var p = this._head
+//  while (idx > 0 && p) {
+//    p = p.next
+//  }
+//  if (p) {
+//    p.val = val
+//  }
+//}
+//// 在链表末尾新增一个结点，值为val
+//LinkedList.prototype.append = function (val) {
+//  var node = {
+//    val: val,
+//    next: null,
+//  }
+//  this._length++
+//  if (this._head == null) {
+//    this._head = node
+//    return this
+//  }
+//  var p = this._head
+//  while (p.next) {
+//    p = p.next
+//  }
+//  p.next = node
+//  return this
+//}
+//// 返回链表末尾结点的值，并删除末尾结点
+//LinkedList.prototype.pop = function () {
+//  if (this._head == null) {
+//    return undefined
+//  }
+//  this._length--
+//  if (this._head.next == null) { //链表只有一个节点时
+//    var result = this._head.val
+//    this._head = null
+//    return result
+//  }
+//  var p = this._head
+//  var pre = null
+//  while (p.next) {
+//    p = p.next
+//  }
+//  var result = p.val
+//  pre.next = null
+//  return result
+//}
+//// 在链表头部新增一个结点，值为val
+//LinkedList.prototype.prepend = function (val) {
+//  var node = {
+//    val: val,
+//    next: this._head,
+//  }
+//  this._length++
+//  this._head = node
+//  return this
+//}
+//// 返回链表第一个结点的值，并删除这一个结点
+//LinkedList.prototype.shift = function () {
+//  if (this.head == null) {
+//    return undefined
+//  }
+//  this._length--
+//  var result = this._head.val
+//  this._head = this._head.next
+//  return result
+//}
+//LinkedList.prototype.toArray = function () {
+//  var result = []
+//  var p = this._head
+//  while (p) {
+//    result.push(p.val)
+//    p = p.next
+//  }
+//  return result
+//}
+//LinkedList.prototype.toString = function () {
+//  return this.toArray().join('->')
+//}
+//Object, defineProperty(LinkedList.prototype, 'size', {
+//  get: function () {
+//    return this._length
+//  }
+//})
 
 
 class LinkedList {
   constructor() {
     this._head = null
     this._length = 0
-    Node(idx) {
-      this.idx = idx
-      this.next = null
-    }
   }
   at(idx) {
     var p = this._head
@@ -226,7 +280,6 @@ class LinkedList {
     var p = this._head
     while (idx > 0 && p) {
       p = p.next
-      idx--
     }
     if (p) {
       p.val = val
@@ -255,16 +308,17 @@ class LinkedList {
     }
     this._length--
     if (this._head.next == null) { //链表只有一个节点时
-      this._head = this._head.val
+      var result = this._head.val
       this._head = null
       return result
     }
     var p = this._head
-    while (p.next.next) {
+    var pre = null
+    while (p.next) {
       p = p.next
     }
-    var result = p.next.val
-    p.next = null
+    var result = p.val
+    pre.next = null
     return result
   }
   prepend(val) {
@@ -297,51 +351,51 @@ class LinkedList {
 
 // 表示一个集合（集合中元素没有序，但不能重复）
 // 构造函数可选的可以传入集合中的初始值，但会被去重后存放
-function MySet(initalValues = []) {
-  this._elements = []
-  for (var val of initalValues) {
-    this.add(val)
-  }
-}
-// 向集合中添加元素
-MySet.prototype.add = function (item) {
-  if (this._elements.includes(item)) {
-    this._elements.push(item)
-  }
-  return this
-}
-// 从集合中删除item元素
-MySet.prototype.delete = function (item) {
-  var idx = this._elements.indexOf(item)
-  if (idx >= 0) {
-    this._elements.splice(idx, 1)
-  }
-  return this
-}
-
-// 获取集合中的元素用 c.size，它是一个getter
-Object.defineProperties(MySet.prototype, 'size', {
-  get: function () {
-    return this._elements.length
-  }
-})
-
-// 清空集合中的所有元素
-MySet.prototype.clear = function () {
-  this._elements = []
-  return this
-}
-
-// 判断集合中是否存在某元素
-MySet.prototype.has = function (item) {
-  return this._elements.includes(item)
-}
-// 遍历集合中的元素（顺序无所谓）
-MySet.prototype.forEach = function (func) {
-  for (var item of this._elements) {
-    func(item)
-  }
-}
+//function MySet(initalValues = []) {
+//  this._elements = []
+//  for (var val of initalValues) {
+//    this.add(val)
+//  }
+//}
+//// 向集合中添加元素
+//MySet.prototype.add = function (item) {
+//  if (!this._elements.includes(item)) {
+//    this._elements.push(item)
+//  }
+//  return this
+//}
+//// 从集合中删除item元素
+//MySet.prototype.delete = function (item) {
+//  var idx = this._elements.indexOf(item)
+//  if (idx >= 0) {
+//    this._elements.splice(idx, 1)
+//    return true
+//  }
+//  return false
+//}
+//
+//// 获取集合中的元素用 c.size，它是一个getter
+//Object.defineProperties(MySet.prototype, 'size', {
+//  get: function () {
+//    return this._elements.length
+//  }
+//})
+//
+//// 清空集合中的所有元素
+//MySet.prototype.clear = function () {
+//  this._elements = []
+//}
+//
+//// 判断集合中是否存在某元素
+//MySet.prototype.has = function (item) {
+//  return this._elements.includes(item)
+//}
+//// 遍历集合中的元素（顺序无所谓）
+//MySet.prototype.forEach = function (func) {
+//  for (var item of this._elements) {
+//    func(item)
+//  }
+//}
 
 
 class MySet {
@@ -352,7 +406,7 @@ class MySet {
     }
   }
   add(item) {
-    if (this._elements.includes(item)) {
+    if (!this._elements.includes(item)) {
       this._elements.push(item)
     }
     return this
@@ -361,15 +415,15 @@ class MySet {
     var idx = this._elements.indexOf(item)
     if (idx >= 0) {
       this._elements.splice(idx, 1)
+      return true
     }
-    return this
+    return false
   }
   get size() {
     return this._elements.length
   }
   clear() {
     this._elements = []
-    return this
   }
   has(item) {
     return this._elements.includes(item)
@@ -399,70 +453,70 @@ class MySet {
 
 // 表示一个映射
 // 这个映射中，可以把任何值映射到任何值，映射的key不限于字符串
-function MyMap(initPairs = []) {
-  this._pairs = []
-  for (var pair of initPairs) {
-    var key = pair[0]
-    var val = pair[1]
-    this.set(key, val)
-  }
-}
-MyMap.prototype = {
-  // 设置映射中的key所对应的值为val
-  set: function (key, val) {
-    for (var i = 0; i < this._pairs.length; i += 2) {
-      if (this._pairs[i] === key) {
-        this._pairs[i + 1] = val
-        return this
-      }
-    }
-    this._pairs.push(key, val)
-    return this
-  },
-  // 获取这个映射中key所对应的val
-  get: function (key) {
-    for (var i = 0; i < this._pairs.length; i += 2) {
-      if (this._pairs[i] === key) {
-        return this._pairs[i + 1]
-      }
-    }
-    return undefined
-  },
-  // 判断这个映射中是否存在这个key的映射
-  has: function (key) {
-    for (var i = 0; i < this._elements.length; i += 2) {
-      if (this._pairs[i] === key) {
-        return true
-      }
-    }
-    return false
-  },
-  // 删除这个映射中key及其映射的值的这一对儿
-  delete: function (key) {
-    for (var i = 0; i < this._pairs.length; i += 2) {
-      if (this._pairs[i] === key) {
-        this._pairs.splice(i, 2)
-        return true
-      }
-    }
-    return false
-  },
-  // 清空这个映射中所有的映射对儿
-  clear: function () {
-    this._pairs = []
-    return this
-  },
-  // 获取这个映射中映射对儿的数量
-  get size() {
-    return this._pairs.length / 2
-  },
-  // 遍历这个映射中所有的映射对儿
-  forEach(iterator) {
-    for (var i = 0; i < this._elements.length; i += 2) {
-      iterator(this._pairs[i + 1], this._pairs[i])
-    }
-  },
-}
+//function MyMap(initPairs = []) {
+//  this._pairs = []
+//  for (var pair of initPairs) {
+//    var key = pair[0]
+//    var val = pair[1]
+//    this.set(key, val)
+//  }
+//}
+//MyMap.prototype = {
+//  // 设置映射中的key所对应的值为val
+//  set: function (key, val) {
+//    for (var i = 0; i < this._pairs.length; i += 2) {
+//      if (this._pairs[i] === key) {
+//        this._pairs[i + 1] = val
+//        return this
+//      }
+//    }
+//    this._pairs.push(key, val)
+//    return this
+//  },
+//  // 获取这个映射中key所对应的val
+//  get: function (key) {
+//    for (var i = 0; i < this._pairs.length; i += 2) {
+//      if (this._pairs[i] === key) {
+//        return this._pairs[i + 1]
+//      }
+//    }
+//    return undefined
+//  },
+//  // 判断这个映射中是否存在这个key的映射
+//  has: function (key) {
+//    for (var i = 0; i < this._pairs.length; i += 2) {
+//      if (this._pairs[i] === key) {
+//        return true
+//      }
+//    }
+//    return false
+//  },
+//  // 删除这个映射中key及其映射的值的这一对儿
+//  delete: function (key) {
+//    for (var i = 0; i < this._pairs.length; i++) {
+//      if (this._pairs[i] === key) {
+//        this._pairs.splice(i, 2)
+//        return true
+//      }
+//    }
+//    return false
+//  },
+//  // 清空这个映射中所有的映射对儿
+//  clear: function () {
+//    this._pairs = []
+//    return this
+//  },
+//  // 获取这个映射中映射对儿的数量
+//  get size() {
+//    return this._pairs.length / 2
+//  },
+//  // 遍历这个映射中所有的映射对儿
+//  forEach(iterator) {
+//    for (var i = 0; i < this._elements.length; i++) {
+//      iterator(this._pairs[i + 1], this._pairs[i])
+//    }
+//  },
+//}
 
 class MyMap {
   constructor(initPairs = []) {
@@ -483,16 +537,25 @@ class MyMap {
     this._pairs.push(key, val)
     return this
   }
+  get(key) {
+    for (var i = 0; i < this._pairs.length; i += 2) {
+      if (this._pairs[i] === key) {
+        return this._pairs[i + 1]
+      }
+    }
+
+    return undefined
+  }
   has(key) {
-    for (var i = 0; i < this._elements.length; i += 2) {
+    for (var i = 0; i < this._pairs.length; i += 2) {
       if (this._pairs[i] === key) {
         return true
       }
     }
     return false
-  }
+  };
   delete(key) {
-    for (var i = 0; i < this._pairs.length; i += 2) {
+    for (var i = 0; i < this._pairs.length; i++) {
       if (this._pairs[i] === key) {
         this._pairs.splice(i, 2)
         return true
@@ -508,7 +571,7 @@ class MyMap {
     return this._pairs.length / 2
   }
   forEach(iterator) {
-    for (var i = 0; i < this._elements.length; i += 2) {
+    for (var i = 0; i < this._elements.length; i++) {
       iterator(this._pairs[i + 1], this._pairs[i])
     }
   }
@@ -516,33 +579,33 @@ class MyMap {
 
 
 // 表示一个栈：即后进先出，先进后出
-function Stack() {
-  this._elements = []
-}
-// 向栈中增加元素
-Stack.prototype.push = function (val) {
-  this._elements.push(val)
-}
-// 从栈中取出元素并删除栈顶元素
-Stack.prototype.pop = function () {
-  return this._elements.pop()
-}
-// 查看但不删除栈顶元素
-Stack.prototype.peek = function () {
-  return this._elements[this._elements.length - 1]
-}
-Object.defineProperty(Stack.prototype, 'size', {
-  get: function () {
-    return this._elements.length
-  }
-})
+//function Stack() {
+//  this._elements = []
+//}
+//// 向栈中增加元素
+//Stack.prototype.push = function (val) {
+//  this._elements.push(val)
+//}
+//// 从栈中取出元素并删除栈顶元素
+//Stack.prototype.pop = function () {
+//  return this._elements.pop()
+//}
+//// 查看但不删除栈顶元素
+//Stack.prototype.peek = function () {
+//  return this._elements[this._elements.length - 1]
+//}
+//Object.defineProperty(Stack.prototype, 'size', {
+//  get: function () {
+//    return this._elements.length
+//  }
+//})
 
 
 class Stack {
   constructor() {
     this._elements = []
   }
-  push() {
+  push(val) {
     this._elements.push(val)
   }
   pop() {
@@ -570,52 +633,52 @@ class Stack {
 
 
 // 表示一个队列：即先进先出，后进后出
-function Queue() {
-  this._head = null
-  this._tail = null
-  this._length = 0
-}
-
-// 向队列中增加元素
-Queue.prototype.add = function (val) {
-  var node = {
-    val: val,
-    next: null,
-  }
-  this._length++
-  if (this._head == null) {
-    this._head = this._tail = node
-    return this
-  }
-  this._tail.next = node
-  this._tail = node
-  return this
-}
-// 从队头取出元素并删除队头元素
-Queue.prototype.pop = function () {
-  if (this._head == null) {
-    return undefined
-  }
-  this._length--
-  if (this._head == this._tail) {
-    var result = this._haed.val
-    this._head = this.tail = null
-    return result
-  }
-  var result = this._head.val
-  this._head = this._head.next
-  return result
-}
-// 查看队头元素（没有查看队尾元素的功能）
-Queue.prototype.peek = function () {
-  return this._head.val
-}
-// 以及queue.size获取队列的长度
-Object.defineProperty(Queue.prototype, 'size', {
-  get: function () {
-    return this._length
-  }
-})
+//function Queue() {
+//  this._head = null
+//  this._tail = null
+//  this._length = 0
+//}
+//
+//// 向队列中增加元素
+//Queue.prototype.add = function (val) {
+//  var node = {
+//    val: val,
+//    next: null,
+//  }
+//  this._length++
+//  if (this._head == null) {
+//    this._head = this._tail = node
+//    return this
+//  }
+//  this._tail.next = node
+//  this._tail = node
+//  return this
+//}
+//// 从队头取出元素并删除队头元素
+//Queue.prototype.pop = function () {
+//  if (this._head == null) {
+//    return undefined
+//  }
+//  this._length--
+//  if (this._head == this._tail) {
+//    var result = this._haed.val
+//    this._head = this.tail = null
+//    return result
+//  }
+//  var result = this._head.val
+//  this._head = this._head.next
+//  return result
+//}
+//// 查看队头元素（没有查看队尾元素的功能）
+//Queue.prototype.peek = function () {
+//  return this._head.val
+//}
+//// 以及queue.size获取队列的长度
+//Object.defineProperty(Queue.prototype, 'size', {
+//  get: function () {
+//    return this._length
+//  }
+//})
 
 class Queue {
   constructor() {
