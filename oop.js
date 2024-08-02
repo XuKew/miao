@@ -95,12 +95,15 @@ Complex.prototype.toString = function () {
 // 表示一个单向链表
 function LinkedList() {
   this._head = null
-  this._length = null
+  this._length = 0
+}
+function Node(idx) {
+  this.idx = idx
+  this.next = null
 }
 // 返回链表第idx个结点的值
 LinkedList.prototype.at = function (idx) {
   var p = this._head
-  var index = 0
   while (idx > 0 && p) {
     p = p.next
     idx--
