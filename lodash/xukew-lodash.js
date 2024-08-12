@@ -9,7 +9,7 @@ var xukew = function () {
     function compact(array) {
         var compactArray = []
         for (var i = 0; i < array.length; i++) {
-            if (array[i] === 0 || array[i] === '' || array[i] === false) {
+            if (array[i] === 0 || array[i] === '' || array[i] === false || array[i] === NaN) {
             } else {
                 compactArray.push(array[i])
             }
