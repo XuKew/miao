@@ -86,7 +86,7 @@ var xukew = function () {
         }, {})
     }
     function head(array) {
-        console.log(array[0])
+        return array[0]
     }
     function indexOf(array, value, fromIndex = 0) {
         if (array == null) {
@@ -105,12 +105,61 @@ var xukew = function () {
         }
         return Newarray
     }
-
     function intersection(array1, array2) {
         var set1 = new Set(array1)
         var set2 = new Set(array2)
         var intersectionSet = new Set(array1.filter(value => set2.has(value)))
         return Array.from(intersectionSet)
+    }
+    function join(array, separator = ',') {
+        var result = ''
+        if (separator !== 'string') {
+            var separator = separator.toString()
+        }
+        for (var i = 0; i < array.length; i++) {
+            if (i == 0) {
+                result += array[i]
+            } else {
+                result += separator + array[i]
+            }
+        }
+        return result
+    }
+    function last(array) {
+        return array[array.length - 1]
+    }
+    function lastIndexOf(array, value, fromIndex = array.length - 1) {
+        if (array == null) {
+            return -1
+        }
+        for (i = fromIndex; i < array.length; i--) {
+            if (array[i] == value) {
+                return i
+            }
+        }
+    }
+    function reverse(array) {
+        var arr = []
+        for (var i = array.length - 1; i >= 0; i--) {
+            arr.push(array[i])
+        }
+        return arr
+    }
+    function sortedIndex(array, value) {
+        var left = 0
+        var right = array.length - 1
+        while (left <= right) {
+            var mid = Math.floor((left + right) / 2)
+            var midVal = array[mid]
+            if (midVal < value) {
+                left = mid + 1
+            } else if (midVal > value) {
+                right = mid - 1
+            } else {
+                return mid
+            }
+        }
+        return left
     }
 
     return {
@@ -125,7 +174,12 @@ var xukew = function () {
         head: head,
         indexOf: indexOf,
         initial: initial,
-        intersection: intersection
+        intersection: intersection,
+        join: join,
+        last: last,
+        lastIndexOf: lastIndexOf,
+        reverse: reverse,
+        sortedIndex: sortedIndex
 
     }
 }()
