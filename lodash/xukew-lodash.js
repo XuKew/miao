@@ -161,6 +161,95 @@ var xukew = function () {
         }
         return left
     }
+    function pull(array, ...values) {
+        var arr = []
+        for (var i = 0; i < array.length; i++) {
+            var val = array[i]
+            if (values.indexOf(val) === -1) {
+                arr.push(val)
+            }
+        }
+        array = arr
+        return array
+    }
+    function isArray(value) {
+        return Object.prototype.toString.call(value) === '[object Array]'
+    }
+    function every(collection, predicate) {
+        if (!Array.isArray(collection)) {
+            return false
+        }
+        for (var i = 0; i < collection.length; i++) {
+            if (!predicate(collection[i])) {
+                return false
+            }
+        }
+        return true
+    }
+    function some(collection, predicate) {
+        if (!Array.isArray(collection)) {
+            return false
+        }
+        for (var i = 0; i < collection.length; i++) {
+            if (!predicate(collection[i])) {
+                return true
+            }
+        }
+        return false
+    }
+    function reduce(collection, iteratee = _.identity, accumulator) {
+        if (accumulator === undefined) {
+            accumulator = collection[0]
+            collection = collection.slice(1)
+        }
+        for (var i = 0; i < collection.length; i++) {
+            accumulator = iteratee(accumulator, collection[i], i, collection)
+        }
+        return accumulator
+    }
+    function isEqual(value, other) {
+        if (value === other) {
+            return true
+        }
+        if (value && typeof value === 'object') {
+            var val = Object.keys(value)
+            var oth = Object.keys(other)
+
+            if (val.length !== oth.length) {
+                return false
+            }
+            for (var key in value) {
+                if (!isEqual(value[key], other[key])) {
+                    return false
+                }
+            }
+            return true
+        }
+        return false
+    }
+    function toPairs(object) {
+        var arr = []
+        for (var key in object) {
+            if (object.hasOwnProperty(key)) {
+                arr.push([key, object[key]])
+            }
+        }
+        return arr
+    }
+    function identity(value) {
+        return value
+    }
+    function concat(array, ...values) {
+        var arr = [array]
+        for (var i = 0; i < values.length; i++) {
+            if (Array.isArray(values[i])) {
+                arr.push(...values[i])
+            } else {
+                arr.push(values[i])
+            }
+        }
+        return arr
+    }
 
     return {
         chunk: chunk,
@@ -179,7 +268,16 @@ var xukew = function () {
         last: last,
         lastIndexOf: lastIndexOf,
         reverse: reverse,
-        sortedIndex: sortedIndex
+        sortedIndex: sortedIndex,
+        pull: pull,
+        isArray: isArray,
+        every: every,
+        some: some,
+        reduce: reduce,
+        isEqual: isEqual,
+        toPairs: toPairs,
+        identity: identity,
+        concat: concat,
 
     }
 }()
