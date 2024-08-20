@@ -250,6 +250,91 @@ var xukew = function () {
         }
         return arr
     }
+    function isNull(value) {
+        return value === null
+    }
+    function isNil(value) {
+        return value === null || value == undefined
+    }
+    function isUndefined(value) {
+        return value === undefined
+    }
+    function max(array) {
+        if (array.length == 0) {
+            return undefined
+        }
+        var maxNum = 0
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] > maxNum) {
+                maxNum = array[i]
+            } else {
+                continue
+            }
+        }
+        return maxNum
+    }
+    function maxBy(array, iteratee = _.identity) {
+        if (array.length == 0) {
+            return undefined
+        }
+        var maxNum = array[0]
+        var maxVal = iteratee(maxNum)
+        for (var i = 1; i < array.length; i++) {
+            var currentVal = iteratee(array[i])
+            if (currentVal > maxVal) {
+                maxNum = array[i]
+                maxVal = currentVal
+            }
+        }
+        return maxNum
+    }
+    function min(array) {
+        if (array.length == 0) {
+            return undefined
+        }
+        var minNum = Infinity
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] < maxNum) {
+                minNum = array[i]
+            } else {
+                continue
+            }
+        }
+        return minNum
+    }
+    function minBy(array, iteratee = _.identity) {
+        if (array.length == 0) {
+            return undefined
+        }
+
+        var minNum = array[0]
+        var minVal = iteratee(minNum)
+        for (var i = 1; i < array.length; i++) {
+            var currentVal = iteratee(array[i])
+            if (iteratee(array[i]) < minVal) {
+                minNum = array[i]
+                minVal = currentVal
+            }
+        }
+        return minNum
+    }
+    function round(number, precision = 0) {
+        var newNumb = Math.pow(10, precision)
+        var res = Math.floor(number * newNumb + 0.5) / newNumb
+        return parseFloat(res.toFixed(precision >= 0 ? precision : 0))
+    }
+    function sumBy(array, iteratee = _.identity) {
+        var sum = 0
+        if (typeof iteratee === 'string') {
+            iteratee = function (obj) {
+                return obj[iteratee]
+            }
+        }
+        for (var key of array) {
+            sum += iteratee(key)
+        }
+        return sum
+    }
 
     return {
         chunk: chunk,
@@ -278,6 +363,15 @@ var xukew = function () {
         toPairs: toPairs,
         identity: identity,
         concat: concat,
+        isNull: isNull,
+        isNil: isNil,
+        isUndefined: isUndefined,
+        max: max,
+        maxBy: maxBy,
+        min: min,
+        minBy: minBy,
+        round: round,
+        sumBy: sumBy
 
     }
 }()
