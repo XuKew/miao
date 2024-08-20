@@ -240,7 +240,7 @@ var xukew = function () {
         return value
     }
     function concat(array, ...values) {
-        var arr = [array]
+        var arr = [...array]
         for (var i = 0; i < values.length; i++) {
             if (Array.isArray(values[i])) {
                 arr.push(...values[i])
@@ -335,6 +335,55 @@ var xukew = function () {
         }
         return sum
     }
+    function values(object) {
+        var arr = []
+        for (var key in object) {
+            if (object.hasOwnProperty(key)) {
+                arr.push([object[key]])
+            }
+        }
+        return arr
+    }
+    function clone(value) {
+        return value
+    }
+    function cloneDeep(value) {
+        if (value === null || typeof value !== 'object') {
+            return value
+        }
+        var result = Object.create(Object.getPrototypeOf(value))
+        for (var key in value) {
+            if (value.hasOwnProperty(key)) {
+                result[key] = cloneDeep(value[key])
+            }
+        }
+        return result
+    }
+    function range(start = 0, end, step = 1) {
+        if (arguments.length === 1) {
+            end = start
+            start = 0
+        }
+        var arr = []
+        if (start < end) {
+            for (var i = start; i < end; i += step) {
+                arr.push(i)
+            }
+        } else {
+            for (var i = start; i > end; i -= step) {
+                arr.push(i)
+            }
+        }
+        return arr
+    }
+    function repeat(string = '', n = 1) {
+        var obj = ''
+        for (var i = 0; i < n; i++) {
+            obj += string
+        }
+        return obj
+    }
+
 
     return {
         chunk: chunk,
@@ -371,7 +420,12 @@ var xukew = function () {
         min: min,
         minBy: minBy,
         round: round,
-        sumBy: sumBy
+        sumBy: sumBy,
+        values: values,
+        clone: clone,
+        cloneDeep: cloneDeep,
+        range: range,
+        repeat: repeat,
 
     }
 }()
