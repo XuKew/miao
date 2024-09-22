@@ -383,6 +383,40 @@ var xukew = function () {
         }
         return obj
     }
+    function isBoolean(value) {
+        return Object.prototype.toString.call(value) === '[object Boolean]'
+    }
+
+    function isDate(value) {
+        return Object.prototype.toString.call(value) === '[object Date]'
+    }
+    function isElement(value) {
+        return value instanceof Element
+    }
+    function isEmpty(value) {
+        if (value == null) {
+            return true
+        }
+        if (typeof value === 'boolean') {
+            return true
+        }
+        if (Array.isArray(value) || typeof value === 'string' || typeof value === 'arguments' || value instanceof String) {
+            return value.length === 0
+        }
+        if (typeof value === 'object') {
+            if (value instanceof Map || value instanceof Set) {
+                return value.size === 0
+            }
+            return Object.keys(value).length === 0
+        }
+        if (typeof value === 'number') {
+            return true
+        }
+        return false
+    }
+    function isArguments(value) {
+        return Object.prototype.toString.call(value) === '[object Arguments]'
+    }
 
 
     return {
@@ -426,6 +460,11 @@ var xukew = function () {
         cloneDeep: cloneDeep,
         range: range,
         repeat: repeat,
+        isBoolean: isBoolean,
+        isDate: isDate,
+        isElement: isElement,
+        isEmpty: isEmpty,
+        isArguments: isArguments,
 
     }
 }()
